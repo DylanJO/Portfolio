@@ -18,13 +18,13 @@ const config: Config = {
       current: 'currentColor',
       'eerie-black': '#222222ff',
       'old-lace': '#f7eddbff',
-      'light-sea-green': '#00a6a6ff',
+      'light-grey': '#F4E6CD',
       'tangerine': '#f08700ff',
       'india-green': '#3e8914ff'
     },
     fontFamily: {
-      sans: ['Oswald', 'sans-serif'],
-      Noto: ['Noto Sans Mono', 'monospace']
+      sans: ['Anton', 'sans-serif'],
+      Noto: ['Noto Sans', 'sans-serif']
     }
   },
   plugins: [],
