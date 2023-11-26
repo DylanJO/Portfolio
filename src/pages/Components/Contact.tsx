@@ -12,9 +12,9 @@ const Contact = () => {
 
   const sendEmail = (e: any) => {
     e.preventDefault();
-    const SERVICE_ID: string = process.env.SERVICE_ID ?? ''
-    const TEMPLATE_ID: string = process.env.TEMPLATE_ID ?? ''
-    const PUBLIC_KEY: string = process.env.PUBLIC_KEY ?? ''
+    const SERVICE_ID: string = process.env.NEXT_PUBLIC_SERVICE_ID ?? ''
+    const TEMPLATE_ID: string = process.env.NEXT_PUBLIC_TEMPLATE_ID ?? ''
+    const PUBLIC_KEY: string = process.env.NEXT_PUBLIC_PUBLIC_KEY ?? ''
 
     emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
       .then((result) => {
