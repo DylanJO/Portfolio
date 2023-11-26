@@ -16,8 +16,6 @@ const Contact = () => {
     const TEMPLATE_ID: string = process.env.NEXT_PUBLIC_TEMPLATE_ID ?? ''
     const PUBLIC_KEY: string = process.env.NEXT_PUBLIC_PUBLIC_KEY ?? ''
 
-    console.log(SERVICE_ID,TEMPLATE_ID,PUBLIC_KEY);
-
     emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
       .then((result) => {
           console.log('email sent');
