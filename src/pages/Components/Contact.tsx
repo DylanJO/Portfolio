@@ -28,20 +28,20 @@ const Contact = () => {
   };
 
     return (
-      <section id="contact" className="flex w-[100%] h-[90vh] bg-eerie-black p-20 align-middle">
+      <section id="contact" className="flex w-[100%] lg:h-[90vh] bg-eerie-black p-10 lg:p-20 align-middle">
         <div className='self-center w-full'>
-          <div className='grid grid-cols-2 content-stretch w-full'>
-            <div className='text-old-lace font-Noto flex flex-col p-10 mx-2 align-middle place-content-center bg-eerie-black rounded-md drop-shadow-[0_0_1px_rgba(247,237,219,0.8)] gap-y-2'>
+          <div className='grid md:grid-cols-2 content-stretch md:w-full space-y-5 md:space-y-0'>
+            <div className='text-old-lace font-Noto flex flex-col p-10 max-w-[80vw] md:mx-2 align-middle place-content-center bg-eerie-black rounded-md drop-shadow-[0_0_1px_rgba(247,237,219,0.8)] gap-y-2'>
               <h4 className='drop-shadow-[0_1px_0_rgba(34,34,34,1)] font-sans font-medium text-4xl tracking-wide pb-5'>Send a message</h4>
               <form ref={formRef} onSubmit={sendEmail} className='flex flex-col gap-y-2'>
-                <div className='flex gap-x-5'>
-                  <div className='flex flex-col w-full '>
+                <div className='flex flex-col lg:flex-row md:gap-x-5'>
+                  <div className='flex flex-col lg:w-full '>
                     <label>Name</label>
-                    <input className='bg-eerie-black drop-shadow-[0_0_1px_rgba(247,237,219,0.8)] py-2 rounded-md px-1' type="text" required id="name" name="name" placeholder="Your name"/>
+                    <input className='bg-eerie-black drop-shadow-[0_0_1px_rgba(247,237,219,0.8)] py-2 rounded-md px-1 flex' type="text" required id="name" name="name" placeholder="Your name"/>
                   </div>
-                  <div className='flex flex-col w-full'>
+                  <div className='flex flex-col lg:w-full'>
                     <label >Email</label>
-                    <input className='bg-eerie-black drop-shadow-[0_0_1px_rgba(247,237,219,0.8)] py-2 rounded-md px-1' type="email" required id="email" name="email" placeholder=""/>
+                    <input className='bg-eerie-black drop-shadow-[0_0_1px_rgba(247,237,219,0.8)] py-2 rounded-md px-1 flex' type="email" required id="email" name="email" placeholder="Email"/>
                   </div>
                 </div>          
 
@@ -65,16 +65,16 @@ const Contact = () => {
               </form>
             </div>
 
-            <div className='mx-2 flex align-middle justify-center flex-col h-full place-content-around'>
+            <div className='md:mx-2 flex align-middle justify-center flex-col h-full place-content-around max-w-[80vw]'>
               <h3 className='text-tangerine font-sans font-bold text-7xl tracking-wide pb-5 uppercase self-center'> Get in Touch </h3>  
               <div className="rounded-md overflow-hidden bg-cover bg-[url('/Sky-BG3.png')] h-full flex flex-col p-10 gap-4">
-                  <div className='text-3xl font-medium text-eerie-black p-5 flex space-x-4 align-middle bg-old-lace rounded-lg drop-shadow-[0_0_1px_rgba(34,34,34,0.5)]'>
+                  <div className='text-2xl lg:text-3xl font-medium text-eerie-black p-5 flex flex-col lg:flex-row space-x-4 align-middle bg-old-lace rounded-lg drop-shadow-[0_0_1px_rgba(34,34,34,0.5)] overflow-clip'>
                     <p className='tracking-wider'>Email:</p>
-                    <a className='hover:text-tangerine font-Noto font-normal text-2xl' href='mailto:dylanoosthuizen@gmail.com'>dylanoosthuizen@gmail.com</a>
+                    <a className='hover:text-tangerine font-Noto font-normal text-lg lg:text-xl' href='mailto:dylanoosthuizen@gmail.com'>dylanoosthuizen@gmail.com</a>
                   </div>
-                  <div className='text-3xl font-medium text-eerie-black p-5 flex space-x-4 align-middle bg-old-lace rounded-lg drop-shadow-[0_0_1px_rgba(34,34,34,0.5)]'>
+                  <div className='text-2xl lg:text-3xl font-medium text-eerie-black p-5 flex flex-col lg:flex-row space-x-4 align-middle bg-old-lace rounded-lg drop-shadow-[0_0_1px_rgba(34,34,34,0.5)]'>
                     <p className='tracking-wider'>Location:</p>
-                    <a className='font-normal text-2xl font-Noto'>Johannesburg, Gauteng, South Africa</a>
+                    <a className='font-normal text-xl lg:text-2xl font-Noto'>Johannesburg, Gauteng, South Africa</a>
                   </div>     
               </div>
             </div>

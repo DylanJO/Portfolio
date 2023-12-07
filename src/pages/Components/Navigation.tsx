@@ -1,5 +1,6 @@
 import { motion, useScroll, useMotionValue, useMotionValueEvent } from 'framer-motion'
 import { useEffect, useState } from 'react'
+import { FaBars } from "react-icons/fa";
 
 const navVariants = {
     hidden: { backgroundColor: "rgba(247, 237, 219, 0)",
@@ -23,32 +24,54 @@ const nameVariants = {
     }}
 }
 
-const Navigation = () => {
+const Navigation = ( {isMobile}: {isMobile: boolean} ) => {
     const [ hidden, setHidden ] = useState(true);
+    const [ burgerMenuOpen, setBurgerMenuOpen ] = useState(false);
     const { scrollY } = useScroll();
     useMotionValueEvent(scrollY, "change", (latest) => {
-        latest > 0 ? setHidden(false) : setHidden(true)
+        if (isMobile === false){
+            latest > 0 ? setHidden(false) : setHidden(true)
+        }
     });
 
+    const handleVisibility = () => {
+        if (isMobile) {
+            setHidden(false)
+        } else {
+            setHidden(true)
+        }
+    }
+
+      const toggleBurgerMenu = () => {
+        setBurgerMenuOpen(!burgerMenuOpen)
+      }
+
+      useEffect(() => {
+        handleVisibility()
+      },[isMobile]) 
+
     return (
-        <div className='w-full flex justify-center px-20 pt-3 fixed z-20'>
+        <div className='w-full justify-end md:justify-center flex px-5 md:px-20 pt-3 fixed z-20'>
             <motion.nav
-            initial="hidden"
+            initial='visible'
             animate={hidden ? 'hidden' : 'visible'}
             variants={navVariants}
-            className=' text-eerie-black font-sans flex w-full font-bold rounded-lg justify-between px-5'>
+            className='text-eerie-black font-sans flex flex-col md:flex-row md:w-full font-bold rounded-lg justify-center md:justify-between md:px-5'>
                 <motion.div
-                initial="hidden"
+                initial='visible'
                 animate={hidden ? 'hidden' : 'visible'}
                 variants={nameVariants}
-                className='p-4'>
-                    <h3 className='text-tangerine font-sans font-bold text-4xl tracking-wider uppercase drop-shadow-[0_1px_0_rgba(34,34,34,0.5)]'>Dylan Oosthuizen</h3>
+                className='flex p-4 justify-center align-middle'>
+                    <div className='md:hidden p-4 cursor-pointer' onClick={toggleBurgerMenu}>
+                        <FaBars />
+                    </div>
+                    { !isMobile || burgerMenuOpen ? <h3 className='text-tangerine font-sans font-bold text-4xl tracking-wider uppercase drop-shadow-[0_1px_0_rgba(34,34,34,0.5)]'>Dylan Oosthuizen</h3> : <></>}
                 </motion.div>
-                <ul className='flex p-4 space-x-10 text-3xl tracking-widest items-center font-medium'>
+                { !isMobile || burgerMenuOpen ? <ul className='flex flex-col md:flex-row p-2 lg:p-4 md:space-x-10 text-2xl lg:text-3xl tracking-widest items-center text-center font-medium'>
                     <li className='cursor-pointer hover:text-tangerine'><a href='#projects'>Projects</a></li>
                     <li className='cursor-pointer hover:text-tangerine'><a href='#about'>About</a></li>
                     <li className='cursor-pointer'><button className='rounded hover:bg-tangerine bg-eerie-black text-old-lace py-1 px-3 flex tracking-widest'><a href='#contact' className='drop-shadow-[0_1px_0_rgba(34,34,34,0.5)]'>Contact</a></button></li>
-                </ul>
+                </ul> : <></>}
             </motion.nav>
         </div>
         

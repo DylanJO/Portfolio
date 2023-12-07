@@ -26,7 +26,7 @@ const featuredImages = [
     live: ''
   }
 ];
-const Projects = () => {
+const Projects = ( {isMobile}: {isMobile: boolean} ) => {
 
   const [ current, setCurrent ] = useState(1)
   const sliderRef = useRef<HTMLDivElement>(null)
@@ -41,15 +41,16 @@ const Projects = () => {
     current < featuredImages.length - 1 ? setCurrent(current + 1) : setCurrent(0)
   }
   
-  useEffect(() => {
-  }, [])
+  // useEffect(() => {
+  //   console.log('projects mobile = ' + isMobile)
+  // }, [])
 
     return (
-        <section className="flex flex-col w-[100%] bg-old-lace text-eerie-black py-20">
+        <section className="flex flex-col w-[100%] bg-old-lace text-eerie-black py-5 md:py-20">
           <a id="projects" className='top-[-15vh] relative'></a>
           <div className='flex px-20 pb-5'>
             <div className='bg-eerie-black w-full h-[1px] self-center mx-5'></div>
-            <h3 className='text-tangerine font-sans font-bold text-7xl tracking-wide uppercase self-center drop-shadow-[0_1px_0_rgba(34,34,34,0.5)]'>Projects</h3>
+            <h3 className='text-tangerine font-sans font-bold text-6xl md:text-7xl tracking-wide uppercase self-center drop-shadow-[0_1px_0_rgba(34,34,34,0.5)]'>Projects</h3>
             <div className='bg-eerie-black w-full h-[1px] self-center mx-5'></div>
           </div>
           <div
@@ -61,7 +62,7 @@ const Projects = () => {
             </div>
             <motion.div
             className="flex"
-            animate={{ x: `calc(-${current * 45}vw + 45vw)`}}
+            animate={{ x: `calc(-${isMobile ? current * 80 + 'vw + ' + (85 - current * 5) +'vw)' : current * 45 + 'vw + 45vw)'}`}}
             transition={{ 
               type: "spring",
               stiffness: 40,
@@ -74,12 +75,12 @@ const Projects = () => {
                   ref={slidesRef}
                   key={index}
                   animate={{ opacity: index === current ? 1 : 0.3}}
-                  className="rounded-md overflow-hidden grid grid-cols-5 mx-2 min-w-[45vw] drop-shadow-[0_1px_3px_rgba(34,34,34,0.5)]">
-                    <div className='col-span-2 flex'>
-                      <img src={project.img} className='object-cover min-h-[300px] pointer-events-none' alt="" />
+                  className="rounded-md overflow-hidden flex flex-col m-0 lg:grid grid-cols-1 lg:grid-cols-5 mx-3 min-w-[80vw] md:min-w-[45vw] drop-shadow-[0_1px_3px_rgba(34,34,34,0.5)]">
+                    <div className='lg:col-span-2 flex '>
+                      <img src={project.img} className='object-cover max-h-[300px] lg:max-h-none min-h-[100px] md:min-h-[300px] w-full md:min-w-[300px] pointer-events-none' alt="" />
                     </div>
-                    <div className='bg-old-lace p-10 col-span-3 flex flex-col '>
-                      <h4 className='font-sans font-medium text-4xl tracking-wide'>{project.title}</h4>
+                    <div className='bg-old-lace p-10 lg:col-span-3 flex flex-col h-full'>
+                      <h4 className='font-sans font-medium text-3xl md:text-4xl tracking-wide'>{project.title}</h4>
                       <p className='font-Noto py-3'>{project.description}</p>
                       <div className='flex h-full align-middle'>
                         <a className='self-end text-4xl hover:text-tangerine' href={project.live}><DiReact /></a>

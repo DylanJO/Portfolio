@@ -1,13 +1,13 @@
 import { motion } from 'framer-motion'
 import { SiNextdotjs, SiExpress } from "react-icons/si"
 import { BiLogoTypescript, BiLogoAdobe } from "react-icons/bi"
-import { DiReact, DiHtml5, DiNodejsSmall, DiPostgresql} from 'react-icons/di'
+import { DiReact, DiHtml5, DiPostgresql} from 'react-icons/di'
 
 const Experience = [
   {
     title: 'Lead Video Automation Engineer: Oliver+',
     duration: 'NOV 2020 - PRESENT',
-    description: 'Facilitating in the automation of large quantities of video media for a large multinational corporation client that is produced for several countries, for social media, online video, TV and cinema. Training and eading a team of motion designers to produce these assets across these media types for various durations, aspect ratios and languages'
+    description: 'Facilitating in the automation of large quantities of video media for a large multinational corporation client that is produced for several countries, for social media, online video, TV and cinema. Training and leading a team of motion designers to produce these assets across these media types for various durations, aspect ratios and languages'
   },
   {
     title: 'Motion Graphic Designer: Oliver+',
@@ -84,15 +84,15 @@ const fadeInVariants =  {
 const About = () => {
 
     return (
-      <section className="w-[100%] bg-light-grey p-20">
+      <section className="w-[100%] bg-light-grey p-10 md:p-20">
 
         <a id="about" className='top-[-15vh] relative'></a>
 
-        <div className='grid grid-cols-3 auto-rows-[1fr] content-stretch'>
+        <div className='grid lg:grid-cols-3 space-y-5 lg:auto-rows-[1fr] content-stretch'>
 
           <div className='col-span-1 mx-2'>
 
-            <div className="drop-shadow-[0_0_1px_rgba(34,34,34,0.8)] rounded-md overflow-hidden bg-cover bg-[url('/Sky-BG2.png')] p-10 h-full flex flex-col place-content-around">
+            <div className="drop-shadow-[0_0_1px_rgba(34,34,34,0.8)] rounded-md overflow-hidden bg-cover bg-[url('/Sky-BG2.png')] p-10 md:h-full flex flex-col place-content-around">
 
               <div className="flex align-middle">
                 <h3 className='drop-shadow-[0_1px_0_rgba(34,34,34,0.5)] text-tangerine font-sans font-bold text-7xl tracking-wide pb-5 uppercase self-center'> About <br/> me </h3>
@@ -158,7 +158,7 @@ const About = () => {
                 })}
               </ul>
             </div>
-            <div className='grid grid-cols-4 gap-x-4 justify-items-stretch'>
+            <div className='grid grid-cols-2 md:grid-cols-4 gap-x-4 justify-items-stretch'>
               {skills.map((skill, index) => {
                   return (
                 <motion.div variants={fadeInVariants}

@@ -5,10 +5,29 @@ import Hero from './Components/Hero'
 import Projects from './Components/Projects'
 import About from './Components/About'
 import Contact from './Components/Contact'
+import { useState, useEffect } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const [ isMobile, setIsMobile ] = useState(false);
+
+  const handleResize = () => {
+    if (window.innerWidth < 768) {
+        setIsMobile(true)
+    } else {
+        setIsMobile(false)
+    }
+  }
+
+  useEffect(() => {
+    
+  })
+
+  useEffect(() => {
+    handleResize()
+    window.addEventListener("resize", handleResize)
+  },[])
   
   return (
     <div>
@@ -21,9 +40,9 @@ export default function Home() {
       </Head>
 
       <main className='m-0 p-0'>
-        <Navigation/>
+        <Navigation isMobile={isMobile}/>
         <Hero />
-        <Projects />
+        <Projects isMobile={isMobile}/>
         <About />
         <Contact />
       </main>
